@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Journey Results</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 30px;
+            margin-bottom: 50px;
+        }
+
+        /* Header Image */
+        .header-image {
+            width: 120px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Main Result Section */
+        .result {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+
+        /* Card Styles */
+        .information, .calorie, .macros {
+            background-color: #f1f1f1;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .information p, .calorie p, .macros p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .information h3, .calorie h3, .macros h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .calorie, .macros {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calorie img, .macros img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Button Styles */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            margin-top: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .result {
+                padding: 20px;
+            }
+
+            .calorie, .macros, .information {
+                width: 100%;
+                margin: 10px 0;
+                padding: 15px;
+            }
+
+            button {
+                width: 100%;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <img src="https://img.freepik.com/free-photo/assortment-veggies-green-background_23-2148290766.jpg?size=626&ext=jpg" alt="Your Journey Logo" class="header-image">
+
+    <h1>Your Goal Results</h1>
+    
+    <div class="result">
+        <!-- Information Section -->
+        <div class="information">
+            <h3>Your Information</h3>
+            <p>Your height: <span id="height-result"></span> cm</p>
+            <p>Your weight: <span id="weight-result"></span> kg</p>
+            <p>Your age: <span id="age-result"></span> years</p>
+            <p>Your goal: <span id="goal-result"></span></p>
+        </div>
+
+        <!-- Calorie, Protein, Carbs, Fat -->
+        <div class="calorie">
+            <img src="https://i.ibb.co/m0hq1Xn/cal.png" alt="Calories">
+            <div>
+                <h3>Recommended Calorie Intake</h3>
+                <p><span id="calories-result"></span> kcal</p>
+            </div>
+        </div>
+
+        <div class="macros">
+            <img src="https://i.ibb.co/bN1Tqhb/pro.jpg" alt="Protein">
+            <div>
+                <h3>Recommended Protein Intake</h3>
+                <p><span id="protein-result"></span> g</p>
+            </div>
+        </div>
+
+        <div class="macros">
+            <img src="https://i.ibb.co/Q6wgvYK/carbs.jpg" alt="Carbs">
+            <div>
+                <h3>Recommended Carbs Intake</h3>
+                <p><span id="carbs-result"></span> g</p>
+            </div>
+        </div>
+
+        <div class="macros">
+            <img src="https://i.ibb.co/t3f7n01/fats.jpg" alt="Fats">
+            <div>
+                <h3>Recommended Fat Intake</h3>
+                <p><span id="fat-result"></span> g</p>
+            </div>
+        </div>
+    </div>
+    
+    <button onclick="goBack()">Go Back to Journey</button>
+
+    <script>
+        // Fetching query parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('height-result').innerText = params.get('height') || 'N/A';
+        document.getElementById('weight-result').innerText = params.get('weight') || 'N/A';
+        document.getElementById('age-result').innerText = params.get('age') || 'N/A';
+        document.getElementById('goal-result').innerText = params.get('goal') || 'N/A';
+        document.getElementById('protein-result').innerText = params.get('protein') || 'N/A';
+        document.getElementById('carbs-result').innerText = params.get('carbs') || 'N/A';
+        document.getElementById('fat-result').innerText = params.get('fat') || 'N/A';
+        document.getElementById('calories-result').innerText = params.get('calories') || 'N/A';
+
+        function goBack() {
+            window.location.href = 'journey.html'; 
+        }
+    </script>
+</body>
+</html>
